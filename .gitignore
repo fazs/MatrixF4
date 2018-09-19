@@ -6,3 +6,7 @@
 MDK-ARM/JLinkLog.txt
 mx.scratch
 Drivers/CMSIS/Lib/
+MDK-ARM/startup_stm32f446xx.lst
+*.build_log.htm
+*.dep
+*.fzs
