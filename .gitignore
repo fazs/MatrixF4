@@ -4,3 +4,5 @@
 *.orig
 *.cppcheck
 MDK-ARM/JLinkLog.txt
+mx.scratch
+Drivers/CMSIS/Lib/

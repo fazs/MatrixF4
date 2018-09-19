@@ -4,7 +4,7 @@
   * @brief   This file contains the headers of the interrupt handlers.
   ******************************************************************************
   *
-  * COPYRIGHT(c) 2017 STMicroelectronics
+  * COPYRIGHT(c) 2018 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -40,17 +40,24 @@
 #endif 
 
 /* Includes ------------------------------------------------------------------*/
+#include "stm32f4xx_hal.h"
+#include "main.h"
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 
 void SysTick_Handler(void);
-void EXTI0_IRQHandler(void);
+void RCC_IRQHandler(void);
+void DMA1_Stream5_IRQHandler(void);
+void DMA1_Stream6_IRQHandler(void);
+void TIM1_UP_TIM10_IRQHandler(void);
 void TIM3_IRQHandler(void);
 void USART1_IRQHandler(void);
 void RTC_Alarm_IRQHandler(void);
 void TIM8_CC_IRQHandler(void);
+void DMA2_Stream2_IRQHandler(void);
+void DMA2_Stream7_IRQHandler(void);
 
 #ifdef __cplusplus
 }
