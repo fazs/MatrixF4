@@ -44,5 +44,8 @@ void framebuffer_putch(char inputstring[], unsigned int cursorposition, unsigned
 static RTC_TimeTypeDef currenttime;
 static RTC_DateTypeDef currentdate;
 static RTC_TimeTypeDef lasttime;
+static RTC_TimeTypeDef difftime;
+
+static unsigned int prediv = 15625;
 
 #endif //MAIN_H

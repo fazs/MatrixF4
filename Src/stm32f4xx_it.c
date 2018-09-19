@@ -62,12 +62,10 @@ extern UART_HandleTypeDef huart1;
 void SysTick_Handler(void)
 {
     /* USER CODE BEGIN SysTick_IRQn 0 */
-
     /* USER CODE END SysTick_IRQn 0 */
     HAL_IncTick();
     HAL_SYSTICK_IRQHandler();
     /* USER CODE BEGIN SysTick_IRQn 1 */
-
     /* USER CODE END SysTick_IRQn 1 */
 }
 
@@ -84,12 +82,9 @@ void SysTick_Handler(void)
 void EXTI0_IRQHandler(void)
 {
     /* USER CODE BEGIN EXTI0_IRQn 0 */
-    HAL_RTC_GetTime(&hrtc, &lasttime, RTC_FORMAT_BCD);
-    interruptFlags |= INTFLAG_ExtInt;
     /* USER CODE END EXTI0_IRQn 0 */
     HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
     /* USER CODE BEGIN EXTI0_IRQn 1 */
-
     /* USER CODE END EXTI0_IRQn 1 */
 }
 
@@ -105,7 +100,6 @@ void TIM3_IRQHandler(void)
     /* USER CODE END TIM3_IRQn 0 */
     HAL_TIM_IRQHandler(&htim3);
     /* USER CODE BEGIN TIM3_IRQn 1 */
-
     HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
     /* USER CODE END TIM3_IRQn 1 */
 }
@@ -116,12 +110,9 @@ void TIM3_IRQHandler(void)
 void USART1_IRQHandler(void)
 {
     /* USER CODE BEGIN USART1_IRQn 0 */
-
     /* USER CODE END USART1_IRQn 0 */
     HAL_UART_IRQHandler(&huart1);
     /* USER CODE BEGIN USART1_IRQn 1 */
-
-
     /* USER CODE END USART1_IRQn 1 */
 }
 
@@ -131,11 +122,9 @@ void USART1_IRQHandler(void)
 void RTC_Alarm_IRQHandler(void)
 {
     /* USER CODE BEGIN RTC_Alarm_IRQn 0 */
-
     /* USER CODE END RTC_Alarm_IRQn 0 */
     HAL_RTC_AlarmIRQHandler(&hrtc);
     /* USER CODE BEGIN RTC_Alarm_IRQn 1 */
-
     /* USER CODE END RTC_Alarm_IRQn 1 */
 }
 
@@ -145,19 +134,21 @@ void RTC_Alarm_IRQHandler(void)
 void TIM8_CC_IRQHandler(void)
 {
     /* USER CODE BEGIN TIM8_CC_IRQn 0 */
-
     /* USER CODE END TIM8_CC_IRQn 0 */
     HAL_TIM_IRQHandler(&htim8);
     /* USER CODE BEGIN TIM8_CC_IRQn 1 */
-    HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
-
+    if(TIM8->CCR1 < 5)
+    {
+        HAL_GPIO_WritePin(LD5_GPIO_Port, LD5_Pin, GPIO_PIN_SET);
+    }
+    else
+    {
+        HAL_GPIO_WritePin(LD5_GPIO_Port, LD5_Pin, GPIO_PIN_RESET);
+    }
     SET_BIT(interruptFlags, INTFLAG_FramebufferWrite);
-
-    HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
     /* USER CODE END TIM8_CC_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */
-
 /* USER CODE END 1 */
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

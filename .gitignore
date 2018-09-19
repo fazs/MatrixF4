@@ -1,1 +1,6 @@
+*.o
+*.d
+*.crf
 *.orig
+*.cppcheck
+MDK-ARM/JLinkLog.txt
